@@ -1,0 +1,42 @@
+{
+    "name": "tekkla/core-mailer",
+    "description": "Multi MTA mailhandler based on phpMailer with psr logging support",
+    "license": "MIT",
+    "type": "library",
+    "keywords":
+    [
+        "mail",
+        "mta",
+        "phpmailer",
+        "psr logger"
+    ],
+    "homepage": "https://github.com/tekkla/core-mailer",
+    "autoload":
+    {
+        "psr-0":
+        {
+            "Core\\Mailer": ""
+        }
+    },
+    "authors":
+    [
+        {
+            "name": "Michael Zorn",
+            "email": "tekkla@tekkla.de",
+            "role": "Developer"
+        }
+    ],
+    "require":
+    {
+        "php": ">=7.0.0",
+        "phpmailer/phpmailer": ">=v5.2.16",
+        "psr/log": "1.0.0"
+    },
+    "repositories":
+    [
+        {
+            "type": "composer",
+            "url": "https://packagist.org/"
+        }
+    ]
+}
