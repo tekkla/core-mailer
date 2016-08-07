@@ -128,7 +128,21 @@ class Mailer
 
                 // Get data of MTA mapped to this mail and check for it's existance
                 if (!$this->checkMta($mail->getMta())) {
-                    $this->logger->error('There is no MTA with id "%s" registered. Skipping mail from "%s" to %s" with subject %s"', $mail->getMta(), $mail->getFrom(), implode('; ', $mail->getRecipients()), $mail->getSubject());
+
+                    $message = vprintf('There is no MTA with id "%s" registered. Skipping mail from "%s" to "%s" with subject "%s"', [
+                        $mail->getMta(),
+                        $mail->getFrom(),
+                        $mail->getRecipients(),
+                        $mail->getSubject()
+                    ]);
+
+                    if (isset($this->logger)) {
+                        $this->logger->error($message);
+                    }
+                    else {
+                        error_log($message);
+                    }
+
                     unset($this->mails[$id]);
                     continue;
                 }
@@ -258,14 +272,28 @@ class Mailer
             }
             catch (\phpmailerException $e) {
 
-                // Log exceptions
-                $this->logger->error('Mailer exception caught: ' . $e->getMessage(), 'Mailer::send()');
+                $message = 'Mailer exception caught: ' . $e->getMessage();
+
+                if (isset($this->logger)) {
+                    $this->logger->error($message);
+                }
+                else {
+                    error_log($message);
+                }
             }
             finally {
 
                 // Any debug infos to log?
                 if (!empty($debug)) {
-                    $this->logger->debug(implode(PHP_EOL, $debug), 'Mailer::SMTPDebug::'. $mailer->SMTPDebug);
+
+                    $message = 'Mailer::SMTPDebug::' . $mailer->SMTPDebug . PHP_EOL . implode(PHP_EOL, $debug);
+
+                    if (isset($this->logger)) {
+                        $this->logger->debug($message);
+                    }
+                    else {
+                        error_log($message);
+                    }
                 }
             }
         }
