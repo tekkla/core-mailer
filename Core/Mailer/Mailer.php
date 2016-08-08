@@ -10,7 +10,7 @@ use Psr\Log\LoggerInterface;
  * @copyright 2016
  * @license MIT
  */
-class Mailer
+class Mailer implements MailerInterface
 {
 
     /**
@@ -55,14 +55,10 @@ class Mailer
     private $debug_level = 0;
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {}
-
-    /**
      *
-     * @param LoggerInterface $logger
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MailerInterface::setLogger($logger)
      */
     public function setLogger(LoggerInterface $logger)
     {
@@ -71,7 +67,9 @@ class Mailer
 
     /**
      *
-     * @param MtaInterface $mta
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MailerInterface::registerMta($mta)
      */
     public function registerMta(MtaInterface $mta)
     {
@@ -79,12 +77,10 @@ class Mailer
     }
 
     /**
-     * Checks for the existance of a MTA
      *
-     * @param string $id
-     *            The id of the MTA
+     * {@inheritdoc}
      *
-     * @return boolean
+     * @see \Core\Mailer\MailerInterface::checkMta($id)
      */
     public function checkMta(string $id): bool
     {
@@ -92,9 +88,10 @@ class Mailer
     }
 
     /**
-     * Returns all registered MTAs
      *
-     * @return array
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MailerInterface::getAllMta()
      */
     public function getAllMta(): array
     {
@@ -102,10 +99,10 @@ class Mailer
     }
 
     /**
-     * Adds a mail object to the mail queue
      *
-     * @param MailInterface $mail
-     *            The mail object
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MailerInterface::addMail($mail)
      */
     public function addMail(MailInterface $mail)
     {
@@ -113,7 +110,10 @@ class Mailer
     }
 
     /**
-     * Sends all mails
+     *
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MailerInterface::send()
      */
     public function send()
     {
