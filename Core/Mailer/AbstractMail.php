@@ -269,6 +269,8 @@ abstract class AbstractMail implements MailInterface
         }
 
         $this->html = (bool) $flag;
+
+        return $flag;
     }
 
     /**
