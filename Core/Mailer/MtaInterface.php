@@ -171,21 +171,5 @@ interface MtaInterface
      * @param array $smtp_options
      */
     public function setSmtpOptions(array $smtp_options);
-
-    /**
-     * Sets the debug level from 0 to 6
-     *
-     * @param int $debug_level
-     *
-     * @throws MtaException when $debug_level is out of boundries.
-     */
-    public function setDebugLevel(int $debug_level);
-
-    /**
-     * Returns the debug level of the MTA
-     *
-     * @return int
-     */
-    public function getDebugLevel(): int;
 }
 

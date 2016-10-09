@@ -311,16 +311,6 @@ abstract class AbstractMta implements MtaInterface
         $this->smtp_options = $smtp_options;
     }
 
-    public function getDebugLevel(): int
-    {
-        return $this->debug_level;
-    }
-
-    public function setDebugLevel(int $debug_level)
-    {
-        $this->debug_level = $debug_level;
-    }
-
     public function __isset($key)
     {
         return isset($this->{$key});

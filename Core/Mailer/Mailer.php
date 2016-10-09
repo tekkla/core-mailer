@@ -49,6 +49,7 @@ class Mailer implements MailerInterface
     private $active = false;
 
     /**
+     * SMTP debug level
      *
      * @var int
      */
@@ -102,6 +103,17 @@ class Mailer implements MailerInterface
      *
      * {@inheritdoc}
      *
+     * @see \Core\Mailer\MailerInterface::setDebugLevel()
+     */
+    public function setDebugLevel(int $debug_level)
+    {
+        $this->debug_level = $debug_level;
+    }
+
+    /**
+     *
+     * {@inheritdoc}
+     *
      * @see \Core\Mailer\MailerInterface::addMail($mail)
      */
     public function addMail(MailInterface $mail)
@@ -117,6 +129,7 @@ class Mailer implements MailerInterface
      */
     public function send()
     {
+
         /* @var $mail \Core\Mailer\MailInterface */
         foreach ($this->mails as $id => $mail) {
 
@@ -155,7 +168,7 @@ class Mailer implements MailerInterface
                 $mailer = new \PHPMailer();
 
                 // Get smtp debug level from config
-                $mailer->SMTPDebug = $mta->getDebugLevel();
+                $mailer->SMTPDebug = $this->debug_level;
 
                 if (!empty($mailer->SMTPDebug)) {
 
@@ -266,7 +279,7 @@ class Mailer implements MailerInterface
 
                 if (!$mailer->send()) {
 
-                    // Log sned errors
+                    // Log send errors
                     $this->logger->error(sprintf('Mail send error: %s', $mailer->ErrorInfo));
                 }
             }
