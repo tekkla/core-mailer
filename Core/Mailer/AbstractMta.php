@@ -34,7 +34,7 @@ abstract class AbstractMta implements MtaInterface
      *
      * @var int
      */
-    private $port;
+    private $port = 25;
 
     /**
      *
@@ -92,7 +92,7 @@ abstract class AbstractMta implements MtaInterface
      */
     public function __construct(string $title)
     {
-        $this->title;
+        $this->title = $title;
     }
 
     /**
