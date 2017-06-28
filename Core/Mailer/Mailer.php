@@ -280,7 +280,9 @@ class Mailer implements MailerInterface
                 if (!$mailer->send()) {
 
                     // Log send errors
-                    $this->logger->error(sprintf('Mail send error: %s', $mailer->ErrorInfo));
+                    if (isset($this->logger)) {
+                        $this->logger->error(sprintf('Mail send error: %s', $mailer->ErrorInfo));
+                    }
                 }
                 else {
                     $mail->setSentStatus(true);
