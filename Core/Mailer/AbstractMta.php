@@ -96,9 +96,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Set the title which will be used to identify the mta
      *
-     * @return string
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getTitle()
      */
     public function getTitle(): string
     {
@@ -106,19 +107,21 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns internal description
      *
-     * @return string
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getDescription()
      */
     public function getDescription(): string
     {
-        return $this->description;
+        return $this->description ?? '';
     }
 
     /**
-     * Sets internal descriptions
      *
-     * @param string $description
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setDescription()
      */
     public function setDescription(string $description)
     {
@@ -126,19 +129,21 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns host
      *
-     * @return string
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getHost()
      */
     public function getHost(): string
     {
-        return $this->host;
+        return $this->host ?? '';
     }
 
     /**
-     * Sets host
      *
-     * @param string $host
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setHost()
      */
     public function setHost(string $host)
     {
@@ -146,9 +151,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns portnumber
      *
-     * @return int
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getPort()
      */
     public function getPort(): int
     {
@@ -156,9 +162,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Sets portnumber
      *
-     * @param int $port
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setPort()
      */
     public function setPort(int $port)
     {
@@ -166,19 +173,21 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns username
      *
-     * @return string
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getUsername()
      */
     public function getUsername(): string
     {
-        return $this->username;
+        return $this->username ?? '';
     }
 
     /**
-     * Sets username
      *
-     * @param string $username
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setUsername()
      */
     public function setUsername(string $username)
     {
@@ -186,19 +195,21 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Retruns password
      *
-     * @return string
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getPassword()
      */
     public function getPassword(): string
     {
-        return $this->password;
+        return $this->password ?? '';
     }
 
     /**
-     * Sets passwort
      *
-     * @param string $password
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setPassword()
      */
     public function setPassword(string $password)
     {
@@ -206,21 +217,21 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns smtp secure type
      *
-     * @return string
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getSmtpSecure()
      */
     public function getSmtpSecure(): string
     {
-        return $this->smtp_secure;
+        return $this->smtp_secure ?? '';
     }
 
     /**
-     * Sets smtp secure type
      *
-     * @param bool $smtp_secure
+     * {@inheritdoc}
      *
-     * @throws MtaException
+     * @see \Core\Mailer\MtaInterface::setSmtpSecure()
      */
     public function setSmtpSecure(string $smtp_secure)
     {
@@ -229,7 +240,7 @@ abstract class AbstractMta implements MtaInterface
             'ssl'
         ];
 
-        if (!in_array($smtp_secure, $types)) {
+        if (! in_array($smtp_secure, $types)) {
             Throw new MtaException(sprintf('"%s" is no valid smtp secure type. Valid types are "ssl" or "tls"'), $smtp_secure);
         }
 
@@ -237,9 +248,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns default mta flag
      *
-     * @return bool
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getIsDefault()
      */
     public function getIsDefault(): bool
     {
@@ -247,9 +259,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Sets default mta flag
      *
-     * @param bool $is_default
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setIsDefault()
      */
     public function setIsDefault(bool $is_default)
     {
@@ -257,9 +270,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns mta type
      *
-     * @return int
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getType()
      */
     public function getType(): int
     {
@@ -267,9 +281,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Sets mta type
      *
-     * @param int $type
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setType()
      */
     public function setType(int $type)
     {
@@ -277,9 +292,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns smtp aut flag
      *
-     * @return bool
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getSmtpAuth()
      */
     public function getSmtpAuth(): bool
     {
@@ -287,9 +303,10 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Sets smtp auth flag
      *
-     * @param bool $smtp_auth
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setSmtpAuth()
      */
     public function setSmtpAuth(bool $smtp_auth)
     {
@@ -297,15 +314,22 @@ abstract class AbstractMta implements MtaInterface
     }
 
     /**
-     * Returns smtp options
      *
-     * @return array
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::getSmtpOptions()
      */
     public function getSmtpOptions(): array
     {
         return $this->smtp_options;
     }
 
+    /**
+     *
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MtaInterface::setSmtpOptions()
+     */
     public function setSmtpOptions(array $smtp_options)
     {
         $this->smtp_options = $smtp_options;

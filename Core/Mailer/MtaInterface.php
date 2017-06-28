@@ -103,6 +103,8 @@ interface MtaInterface
     /**
      * Returns smtp secure type
      *
+     * This can be 'tls' or 'ssl'.
+     *
      * @return string
      */
     public function getSmtpSecure(): string;
@@ -110,7 +112,9 @@ interface MtaInterface
     /**
      * Sets smtp secure type
      *
-     * @param bool $smtp_secure
+     * @param string $smtp_secure
+     *      Select from 'tls' or 'ssl'.
+     *      Default: 'tls'
      *
      * @throws MtaException
      */
