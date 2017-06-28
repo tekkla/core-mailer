@@ -282,6 +282,9 @@ class Mailer implements MailerInterface
                     // Log send errors
                     $this->logger->error(sprintf('Mail send error: %s', $mailer->ErrorInfo));
                 }
+                else {
+                    $mail->setSentStatus(true);
+                }
             }
             catch (\phpmailerException $e) {
 
@@ -293,6 +296,7 @@ class Mailer implements MailerInterface
                 else {
                     error_log($message);
                 }
+
             }
             finally {
 

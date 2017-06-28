@@ -52,7 +52,6 @@ interface MailerInterface
      */
     public function addMail(MailInterface $mail);
 
-
     /**
      * Sets SMTP debug level to get used
      *
@@ -62,7 +61,9 @@ interface MailerInterface
 
     /**
      * Sends all mails
+     *
+     * @return bool
      */
-    public function send();
+    public function send(): bool;
 }
 

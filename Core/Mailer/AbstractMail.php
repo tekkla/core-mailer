@@ -115,6 +115,12 @@ abstract class AbstractMail implements MailInterface
 
     /**
      *
+     * @var bool
+     */
+    protected $sent_status = false;
+
+    /**
+     *
      * {@inheritdoc}
      *
      * @see \Core\Mailer\MailInterface::getSubject()
@@ -305,7 +311,7 @@ abstract class AbstractMail implements MailInterface
     {
         return [
             'from' => $this->from,
-            'name' => $this->fromname,
+            'name' => $this->fromname
         ];
     }
 
@@ -370,8 +376,7 @@ abstract class AbstractMail implements MailInterface
         foreach ($reply_tos as $key => $val) {
             if (is_numeric($key)) {
                 $this->addReplyto($val);
-            }
-            else {
+            } else {
                 $this->addReplyto($key, $val);
             }
         }
@@ -402,7 +407,7 @@ abstract class AbstractMail implements MailInterface
             'bcc'
         ];
 
-        if (!in_array($type, $types)) {
+        if (! in_array($type, $types)) {
             Throw new MailException(sprintf('The recipienttype "%" is not allowed. Please select from "to", "cc" or "bcc"'), $type);
         }
 
@@ -429,15 +434,14 @@ abstract class AbstractMail implements MailInterface
             'bcc'
         ];
 
-        if (!in_array($type, $types)) {
+        if (! in_array($type, $types)) {
             Throw new MailException(sprintf('The recipienttype "%" is not allowed. Please select from "to", "cc" or "bcc"'), $type);
         }
 
         foreach ($recipients as $key => $val) {
             if (is_numeric($key)) {
                 $this->addRecipient($type, $val);
-            }
-            else {
+            } else {
                 $this->addRecipient($type, $key, $val);
             }
         }
@@ -691,7 +695,7 @@ abstract class AbstractMail implements MailInterface
      */
     public function getMta(): string
     {
-        if (!$this->mta) {
+        if (! $this->mta) {
             Throw new MailException('No MTA id set.');
         }
 
@@ -707,6 +711,28 @@ abstract class AbstractMail implements MailInterface
     public function setMta(string $id)
     {
         $this->mta = $id;
+    }
+
+    /**
+     *
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MailInterface::getSentStatus()
+     */
+    public function getSentStatus(): bool
+    {
+        return $this->sent_status;
+    }
+
+    /**
+     *
+     * {@inheritdoc}
+     *
+     * @see \Core\Mailer\MailInterface::setSentStatus()
+     */
+    public function setSentStatus(bool $send_status): void
+    {
+        $this->sent_status = $send_status;
     }
 }
 

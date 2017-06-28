@@ -337,5 +337,19 @@ interface MailInterface
      *            The id of registered MTA to use for sending this mail
      */
     public function setMta(string $id);
+
+    /**
+     * Sets the sent status
+     *
+     * @param bool $sent_status
+     */
+    public function setSentStatus(bool $send_status): void;
+
+    /**
+     * Returns the sent status
+     *
+     * @return bool
+     */
+    public function getSentStatus(): bool;
 }
 
