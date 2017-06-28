@@ -127,7 +127,7 @@ class Mailer implements MailerInterface
      *
      * @see \Core\Mailer\MailerInterface::send()
      */
-    public function send(): bool
+    public function send()
     {
 
         /* @var $mail \Core\Mailer\MailInterface */

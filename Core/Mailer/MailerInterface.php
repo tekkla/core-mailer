@@ -61,9 +61,7 @@ interface MailerInterface
 
     /**
      * Sends all mails
-     *
-     * @return bool
      */
-    public function send(): bool;
+    public function send();
 }
 
