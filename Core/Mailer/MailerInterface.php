@@ -32,7 +32,7 @@ interface MailerInterface
      *
      * @param string $id
      *            The id of the MTA
-     *
+     *            
      * @return boolean
      */
     public function checkMta(string $id): bool;
@@ -61,7 +61,9 @@ interface MailerInterface
 
     /**
      * Sends all mails
+     *
+     * @param bool $remove_sent_mails
+     *            Flag to remove a successfully sent mail from the mail stack
      */
-    public function send();
+    public function send(bool $remove_sent_mails = true);
 }
-
