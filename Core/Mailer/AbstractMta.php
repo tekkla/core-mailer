@@ -74,9 +74,9 @@ abstract class AbstractMta implements MtaInterface
 
     /**
      *
-     * @var string
+     * @var array
      */
-    private $smtp_options;
+    private $smtp_options = [];
 
     /**
      *
