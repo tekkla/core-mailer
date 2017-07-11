@@ -72,7 +72,7 @@ interface MailInterface
      *            Optional title (Default: '')
      * @param string $encoding
      *            Optional encoding (Default: 'base64')
-     * @param strng $type
+     * @param string $type
      *            Optional attachement type (Default: 'application/octet-stream')
      */
     public function addAttachment(string $path, string $name = '', string $encoding = 'base64', string $type = 'application/octet-stream');
@@ -100,7 +100,7 @@ interface MailInterface
      *            Optional title (Default: '')
      * @param string $encoding
      *            Optional encoding (Default: 'base64')
-     * @param strng $type
+     * @param string $type
      *            Optional attachement type (Default: 'application/octet-stream')
      */
     public function addEmbeddedImage(string $path, string $cid, string $name = '', string $encoding = 'base64', string $type = 'application/octet-stream');

@@ -28,13 +28,6 @@ class Mailer implements MailerInterface
     private $mails = [];
 
     /**
-     * Cfg service
-     *
-     * @var Cfg
-     */
-    private $config;
-
-    /**
      * Log service
      *
      * @var LoggerInterface
@@ -44,7 +37,7 @@ class Mailer implements MailerInterface
     /**
      * Mailer active state flag
      *
-     * @var unknown
+     * @var bool
      */
     private $active = false;
 
