@@ -2,6 +2,8 @@
 namespace Core\Mailer;
 
 use Psr\Log\LoggerInterface;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 /**
  * Mailer.php
@@ -156,7 +158,7 @@ class Mailer implements MailerInterface
                 }
                 
                 // Create Ma
-                $mailer = new \PHPMailer();
+                $mailer = new PHPMailer();
                 
                 // Get smtp debug level from config
                 $mailer->SMTPDebug = $this->debug_level;
@@ -281,7 +283,7 @@ class Mailer implements MailerInterface
                         unset($this->mails[$id]);
                     }
                 }
-            } catch (\phpmailerException $e) {
+            } catch (Exception $e) {
                 
                 $message = 'Mailer exception caught: ' . $e->getMessage();
                 
